@@ -1,0 +1,67 @@
+[
+    {
+        "model": "catalog.product",
+        "pk": 1,
+        "fields": {
+            "name": "Яблоко",
+            "description": "Зеленое",
+            "preview": "product/1695810200_gas-kvas-com-p-kartinki-yabloko-49_wuGckYA.png",
+            "category": 1,
+            "price": 40,
+            "created_at": "2024-03-29T22:49:59.192Z",
+            "last_modified_date": "2024-03-29T22:49:59.192Z"
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 2,
+        "fields": {
+            "name": "Банан",
+            "description": "Спелый",
+            "preview": "product/1644927478_128795_url.jpeg",
+            "category": 1,
+            "price": 30,
+            "created_at": "2024-03-29T22:50:19.092Z",
+            "last_modified_date": "2024-03-29T22:50:19.092Z"
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 3,
+        "fields": {
+            "name": "Картофель",
+            "description": "Молодой",
+            "preview": "product/1706119735_binomen-ru-p-rannii-kartofel-pinterest-6.jpg",
+            "category": 2,
+            "price": 15,
+            "created_at": "2024-03-29T22:50:44.032Z",
+            "last_modified_date": "2024-03-29T22:50:44.032Z"
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 4,
+        "fields": {
+            "name": "Огурец",
+            "description": "Свежий",
+            "preview": "",
+            "category": 2,
+            "price": 45,
+            "created_at": "2024-03-29T22:51:28.340Z",
+            "last_modified_date": "2024-03-29T22:51:28.340Z"
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 5,
+        "fields": {
+            "name": "Черника",
+            "description": "Вкусная",
+            "preview": "product/1695995796_gas-kvas-com-p-kartinki-chernika-11.jpg",
+            "category": 3,
+            "price": 80,
+            "created_at": "2024-03-29T22:51:42.151Z",
+            "last_modified_date": "2024-03-29T22:51:42.151Z"
+        }
+    }
+]
