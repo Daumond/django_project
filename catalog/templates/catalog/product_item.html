@@ -1,0 +1,22 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="col-3">
+    <div class="card mb-4 box-shadow">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal"> {{object|title}}</h4>
+            <img class="card-img-top" src="{% my_media object.preview %}" alt="Картинка"  width="200" height="200"/>
+        </div>
+        <div class="card-body">
+
+            <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                <p class="card-text">Категория: {{ object.category }}</p>
+                <li>Описание: {{object.description|title}}</li>
+                <br>
+                <li class="card-title pricing-card-title"> Цена: {{object.price|title}} руб.</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
