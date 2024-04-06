@@ -5,10 +5,10 @@ from catalog.models import Product, Category
 
 # Create your views here.
 def home(request):
-    category_list = Category.objects.all()
+    product_list = Product.objects.all()
     context = {
-        'object_list': category_list,
-        'title': 'Категории товаров'
+        'object_list': product_list,
+        'title': 'Список товаров'
     }
     return render(request, 'catalog/home.html',  context)
 
@@ -34,12 +34,13 @@ def product(request):
     return render(request, 'catalog/product.html', context)
 
 
+"""
 def product_category(request, category):
     context = {
         'object_list': Product.objects.filter(category_id=category),
     }
     return render(request, 'catalog/product.html', context)
-
+"""
 def product_item(request, pk):
     context = {
         'object': Product.objects.get(pk=pk)
