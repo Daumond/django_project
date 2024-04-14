@@ -14,5 +14,4 @@ urlpatterns = [
     path('delete/<slug:slug>/', BlogDeleteView.as_view(), name='blog_delete'),
     path('published/<slug:slug>/', toggle_published, name='toggle_published'),
     path('all/', BlogAllListView.as_view(), name='blog_all_list'),
-
 ]
