@@ -8,14 +8,28 @@
             <img class="card-img-top" src="{% my_media object.preview %}" alt="Картинка" width="200" height="200"/>
         </div>
         <div class="card-body">
+            <div class="card-footer">
+                <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                    <p class="card-text">Категория: {{ object.category }}</p>
+                    <li>Описание: {{object.description|title}}</li>
+                    <br>
+                    <li class="card-title pricing-card-title"> Цена: {{object.price|title}} руб.</li>
+                    <li class="card-footer">
+                        {% if object.active_version %}
+                        Активная версия: {{ object.active_version.name }}
+                        ({{ object.active_version.number }})
+                        {% else %}
+                        Нет активной версии
+                        {% endif %}
+                    </li>
+                </ul>
 
-            <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                <p class="card-text">Категория: {{ object.category }}</p>
-                <li>Описание: {{object.description}}</li>
-                <br>
-                <li class="card-title pricing-card-title"> Цена: {{object.price|title}} руб.</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+                <button type="button" class="btn btn-lg btn-outline-primary">Купить</button>
+                <a href="{% url 'catalog:update_product' object.pk %}" type="button"
+                   class="btn btn-sm btn-outline-success">Изменить</a>
+                <a href="{% url 'catalog:home' %}" type="button"
+                   class="btn btn-sm btn-outline-success">Назад</a>
+            </div>
         </div>
     </div>
 </div>
