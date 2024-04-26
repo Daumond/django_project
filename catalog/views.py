@@ -14,6 +14,7 @@ class ProductListView(ListView):
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
 
+
         for product in context_data['object_list']:
             product.active_version = product.version_set.filter(is_active=True).first()
 
@@ -40,6 +41,7 @@ class ContactsView(UpdateView):
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'catalog/product_item.html'
+
 
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
@@ -82,8 +84,3 @@ class ProductUpdateView(UpdateView):
 
         return super().form_valid(form)
 
-# def product_item(request, pk):
-#     context = {
-#         'object': Product.objects.get(pk=pk)
-#     }
-#     return render(request, 'catalog/product_item.html', context)
