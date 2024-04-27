@@ -5,7 +5,11 @@
     <div class="card mb-4 box-shadow">
         <div class="card-header">
             <h2 class="my-0 font-weight-normal"> {{object|title}}</h2>
-            <img class="card-img-top" src="{% my_media object.preview %}" alt="Картинка" width="200" height="200"/>
+            {% if object.preview %}
+            <img class="card-img-top" src="{{object.preview.url}}" alt="{{ object.name }}" width="200" height="200"/>
+            {% else %}
+            <img class="card-img-top" src="/media/product/unknown.jpeg" width="150" height="150" alt="unknown">
+            {% endif %}
         </div>
         <div class="card-body">
             <div class="card-footer">
