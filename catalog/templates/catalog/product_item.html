@@ -27,6 +27,8 @@
                 <button type="button" class="btn btn-lg btn-outline-primary">Купить</button>
                 <a href="{% url 'catalog:update_product' object.pk %}" type="button"
                    class="btn btn-sm btn-outline-success">Изменить</a>
+                <a href="{% url 'catalog:delete_product' object.pk %}" type="button"
+                   class="btn btn-sm btn-outline-success">Удалить</a>
                 <a href="{% url 'catalog:home' %}" type="button"
                    class="btn btn-sm btn-outline-success">Назад</a>
             </div>
