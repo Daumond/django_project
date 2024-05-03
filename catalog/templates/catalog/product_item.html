@@ -18,6 +18,7 @@
                     <li>Описание: {{object.description|title}}</li>
                     <br>
                     <li class="card-title pricing-card-title"> Цена: {{object.price|title}} руб.</li>
+                    <li>Добавил продукт: {{object.user|default:'-'}}</li>
                     <li class="card-footer">
                         {% if object.active_version %}
                         Активная версия: {{ object.active_version.name }}
