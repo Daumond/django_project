@@ -18,6 +18,7 @@
         <div class="card-body">
             <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                 <li>{{object.description|slice:":100"}}</li>
+                <li>Добавил продукт: {{object.user|default:'-'}}</li>
             </ul>
             <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                 {% if object.active_version %}

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from pytils.translit import slugify
@@ -6,8 +7,9 @@ from django.views.generic import DetailView, ListView, CreateView, UpdateView, D
 from blog.models import Blog
 
 
-class BlogDetailView(DetailView):
+class BlogDetailView(LoginRequiredMixin, DetailView):
     model = Blog
+    login_url = reverse_lazy('users:login')
 
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
@@ -22,8 +24,9 @@ class BlogAllListView(ListView):
     template_name = 'blog/blog_all_list.html'
 
 
-class BlogListView(ListView):
+class BlogListView(LoginRequiredMixin, ListView):
     model = Blog
+    login_url = reverse_lazy('users:login')
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
@@ -31,8 +34,10 @@ class BlogListView(ListView):
         return queryset
 
 
-class BlogCreateView(CreateView):
+class BlogCreateView(LoginRequiredMixin, CreateView):
     model = Blog
+    login_url = reverse_lazy('users:login')
+
     extra_context = {
         'title': 'Создание статьи',
     }
@@ -67,9 +72,10 @@ class BlogUpdateView(UpdateView):
         return reverse('blog:blog_detail', args=[self.kwargs.get('slug')])
 
 
-class BlogDeleteView(DeleteView):
+class BlogDeleteView(LoginRequiredMixin, DeleteView):
     model = Blog
     success_url = reverse_lazy('blog:blog_list')
+    login_url = reverse_lazy('users:login')
 
 
 def toggle_published(slug):
