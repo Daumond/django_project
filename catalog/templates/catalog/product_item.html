@@ -28,14 +28,27 @@
                         {% endif %}
                     </li>
                 </ul>
-
-                <button type="button" class="btn btn-lg btn-outline-primary">Купить</button>
+                {% if object.user == user %}
                 <a href="{% url 'catalog:update_product' object.pk %}" type="button"
                    class="btn btn-sm btn-outline-success">Изменить</a>
                 <a href="{% url 'catalog:delete_product' object.pk %}" type="button"
                    class="btn btn-danger">Удалить</a>
                 <a href="{% url 'catalog:home' %}" type="button"
                    class="btn btn-sm btn-outline-success">Назад</a>
+                {% if perms.catalog.set_published %}
+                {% if object.is_published %}
+                <a href="{% url 'catalog:product_unpublished' object.pk %}" type="button"
+                   class="btn btn-sm btn-outline-success">Снять с публикации</a>
+                {% else %}
+                <a href="{% url 'catalog:product_published' object.pk %}" type="button"
+                   class="btn btn-sm btn-outline-success">Опубликовать</a>
+                {% endif %}
+                {% endif %}
+                {% else %}
+                <button type="button" class="btn btn-lg btn-outline-primary">Купить</button>
+                <a href="{% url 'catalog:home' %}" type="button"
+                   class="btn btn-sm btn-outline-success">Назад</a>
+                {% endif %}
             </div>
         </div>
     </div>
