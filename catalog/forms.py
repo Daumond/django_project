@@ -14,7 +14,7 @@ class StyleFormMixin():
 class ProductForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Product
-        exclude = ('date_of_creation', 'last_modified_date', 'user')
+        exclude = ('date_of_creation', 'last_modified_date', 'user', 'is_active')
 
     def clean_name(self):
         cleaned_data = self.cleaned_data['name']
@@ -35,6 +35,12 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
                 raise forms.ValidationError('Это запрещенный продукт, нельзя добавить!')
 
         return cleaned_data
+
+
+class ProductModeratorForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ('is_published', 'description', 'category',)
 
 
 class VersionForm(StyleFormMixin, forms.ModelForm):
