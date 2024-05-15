@@ -5,7 +5,8 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from catalog.forms import ProductForm, VersionForm, ProductModeratorForm
-from catalog.models import Product, Version
+from catalog.models import Product, Version, Category
+from catalog.utils import category_cache
 
 
 class ProductListView(ListView):
@@ -106,3 +107,14 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:home')
     login_url = reverse_lazy('users:login')
+
+
+class CategoryListView(LoginRequiredMixin, ListView):
+    model = Category
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context_data = super().get_context_data()
+        category_list = category_cache()
+        context_data['object_list'] = category_list
+
+        return context_data
